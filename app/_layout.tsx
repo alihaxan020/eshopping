@@ -1,16 +1,9 @@
-import React from "react";
-import { Stack } from "expo-router";
+import { Stack } from "expo-router/stack";
 
-const RootLayout = () => {
+export default function Layout() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="(protected)" />
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
-};
-
-export default RootLayout;
+}
