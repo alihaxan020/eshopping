@@ -1,6 +1,6 @@
+import { theme } from "@/theme/theme";
 import {
   Ionicons,
-  FontAwesome,
   FontAwesome5,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -11,6 +11,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: "blue",
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -28,7 +29,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused, size }) => (
@@ -41,13 +42,13 @@ export default function TabLayout() {
               <Ionicons
                 size={size}
                 name={focused ? "home" : "home-outline"}
-                color={focused ? "#F02A4B" : "gray"}
+                color={focused ? theme.background : "gray"}
               />
               <Text
                 style={{
                   fontSize: 12,
                   marginTop: 4,
-                  color: focused ? "#F02A4B" : "gray",
+                  color: focused ? theme.background : "gray",
                 }}
               >
                 Home
@@ -70,13 +71,13 @@ export default function TabLayout() {
               <Ionicons
                 size={size}
                 name={focused ? "heart-sharp" : "heart-outline"}
-                color={focused ? "#F02A4B" : "gray"}
+                color={focused ? theme.background : "gray"}
               />
               <Text
                 style={{
                   fontSize: 12,
                   marginTop: 4,
-                  color: focused ? "#F02A4B" : "gray",
+                  color: focused ? theme.background : "gray",
                 }}
               >
                 Favorites
@@ -97,10 +98,10 @@ export default function TabLayout() {
                 height: 56,
                 width: 56,
                 borderRadius: 27,
-                backgroundColor: "#F02A4B",
+                backgroundColor: theme.background,
                 marginBottom: 56,
                 elevation: 5,
-                shadowColor: "#F02A4B",
+                shadowColor: theme.background,
                 shadowOffset: {
                   width: 0,
                   height: 2,
@@ -132,13 +133,13 @@ export default function TabLayout() {
               <Ionicons
                 size={size}
                 name={focused ? "cart" : "cart-outline"}
-                color={focused ? "#F02A4B" : "gray"}
+                color={focused ? theme.background : "gray"}
               />
               <Text
                 style={{
                   fontSize: 12,
                   marginTop: 4,
-                  color: focused ? "#F02A4B" : "gray",
+                  color: focused ? theme.background : "gray",
                 }}
               >
                 Cart
@@ -161,13 +162,13 @@ export default function TabLayout() {
               <FontAwesome5
                 size={size}
                 name={focused ? "user-alt" : "user"}
-                color={focused ? "#F02A4B" : "gray"}
+                color={focused ? theme.background : "gray"}
               />
               <Text
                 style={{
                   fontSize: 12,
                   marginTop: 4,
-                  color: focused ? "#F02A4B" : "gray",
+                  color: focused ? theme.background : "gray",
                 }}
               >
                 Profile
