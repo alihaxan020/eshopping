@@ -11,8 +11,6 @@ const productDetail = () => {
   const navigation = useNavigation();
   const route = useRoute<any>();
   const { item } = route.params;
-  console.log(typeof item.id.toString());
-
   return (
     <ContainerWrapper>
       <Text>productDetail</Text>

@@ -23,6 +23,36 @@ const userApi = api.injectEndpoints({
                 transformResponse: (response: any) => {
                     return response.data
                 }
+            }),
+            profile: builder.query({
+                query: () => ({
+                    url: "/profile",
+                    method: 'GET'
+                }),
+                transformResponse: (response: any) => {
+                    console.log('====================================');
+                    console.log(response.data);
+                    console.log('====================================');
+                    return response.data
+                },
+
+            }),
+            updateProfile: builder.mutation({
+                query: (body) => ({
+                    url: 'updateProfile',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                    body
+                }),
+                transformResponse: (response: any) => {
+                    console.log('====================================');
+                    console.log(response.data);
+                    console.log('====================================');
+                    return response.data
+                },
+
             })
 
         })
@@ -32,11 +62,13 @@ const userApi = api.injectEndpoints({
 })
 
 
-export const { useLoginMutation, useRegisterMutation } = userApi;
+export const { useLoginMutation, useRegisterMutation, useProfileQuery, useUpdateProfileMutation } = userApi;
 
 export const {
     endpoints: {
         login,
-        register
+        register,
+        profile,
+        updateProfile
     }
 } = userApi

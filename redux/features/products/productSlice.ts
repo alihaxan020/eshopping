@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getProducts } from "./productApi";
 
-export const PRODUCT_FEATURE_KEY = 'PRODUCTS_FEATURE';
+export const PRODUCT_FEATURE_KEY = 'products';
 
 export const initialState = {
     products: [],

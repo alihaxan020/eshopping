@@ -68,7 +68,7 @@ const index = () => {
   }
 
   if (isAuthenticated) {
-    return <Redirect href="/(tabs)/(home)/home" />;
+    return <Redirect href="/(tabs)/account" />;
   }
   return (
     <View style={styles.container}>

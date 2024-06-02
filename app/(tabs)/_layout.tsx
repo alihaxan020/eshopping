@@ -11,7 +11,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         tabBarActiveTintColor: "blue",
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -32,6 +32,7 @@ export default function TabLayout() {
         name="(home)"
         options={{
           title: "Home",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <View
               style={{
@@ -61,6 +62,7 @@ export default function TabLayout() {
         name="favorites"
         options={{
           title: "Favorites",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <View
               style={{
@@ -90,6 +92,7 @@ export default function TabLayout() {
         name="search"
         options={{
           title: "Favorites",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <View
               style={{
@@ -123,6 +126,7 @@ export default function TabLayout() {
         name="cart"
         options={{
           title: "Cart",
+          headerShown: false,
           tabBarIcon: ({ color, focused, size }) => (
             <View
               style={{
@@ -151,7 +155,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="account"
         options={{
+          headerStyle: {
+            backgroundColor: theme.background,
+            shadowColor: "transparent",
+            // elevation: 0,
+          },
           title: "Profile",
+          headerTitle: "",
+          headerRight: () => (
+            <View style={{ paddingHorizontal: 10 }}>
+              <Ionicons
+                name="notifications-sharp"
+                size={24}
+                color={theme.white}
+              />
+            </View>
+          ),
           tabBarIcon: ({ color, focused, size }) => (
             <View
               style={{

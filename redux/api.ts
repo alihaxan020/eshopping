@@ -1,5 +1,7 @@
-import { BaseQueryFn, EndpointBuilder, EndpointDefinitions, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
+import { SECURE_TOKEN, getValueFor, logoutValue, setValueFor } from '@/utils/scoreStorage';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { router } from 'expo-router';
+export const IMAGE_BASE_URL = 'https://59f3-149-71-34-165.ngrok-free.app'
 export const api = createApi({
     /**
          * `reducerPath` is optional and will not be required by most users.
@@ -11,8 +13,24 @@ export const api = createApi({
     reducerPath: 'splitApi',
     baseQuery: async (args, api, extraOptions) => {
         try {
-            const result = await fetchBaseQuery({ baseUrl: 'https://4cc7-149-71-34-199.ngrok-free.app/api' })(args, api, extraOptions);
+            const result = await fetchBaseQuery({
+                baseUrl: 'https://59f3-149-71-34-165.ngrok-free.app/api',
+                prepareHeaders: async (headers, { getState }) => {
+                    // By default, if we have a token in the store, let's use that for authenticated requests
+                    const token = await getValueFor(SECURE_TOKEN);
+                    if (token) {
+                        headers.set('Authorization', `Bearer ${token}`);
+                    }
+                    return headers;
+                }
+
+            })(args, api, extraOptions);
             if (result.error) {
+
+                if (result.error.status === 401) {
+                    await setValueFor(SECURE_TOKEN, '')
+                    router.replace('/')
+                }
                 return { error: result.error };
             }
             return result;
