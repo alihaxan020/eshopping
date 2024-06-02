@@ -2,9 +2,11 @@ import { ConfigureStoreOptions, combineReducers, configureStore } from "@reduxjs
 import { PRODUCT_FEATURE_KEY, productReducer } from "./features/products/productSlice";
 import { api } from "./api";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { USER_FEATURE_KEY, userReducer } from "./features/users/userSlice";
 
 const rootReducer = combineReducers({
     [PRODUCT_FEATURE_KEY]: productReducer,
+    [USER_FEATURE_KEY]: userReducer,
     [api.reducerPath]: api.reducer
 })
 

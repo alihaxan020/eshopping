@@ -11,16 +11,16 @@ export const api = createApi({
     reducerPath: 'splitApi',
     baseQuery: async (args, api, extraOptions) => {
         try {
-            const result = await fetchBaseQuery({ baseUrl: 'https://fakestoreapi.com' })(args, api, extraOptions);
+            const result = await fetchBaseQuery({ baseUrl: 'https://4cc7-149-71-34-199.ngrok-free.app/api' })(args, api, extraOptions);
             if (result.error) {
-                console.error('Fetch error:', result.error);
+                return { error: result.error };
             }
             return result;
         } catch (error) {
-            console.error('Network request failed:', error);
+
             return { error: { status: 'FETCH_ERROR', error: 'Network request failed' } };
         }
     },
-    tagTypes: ["products"],
+    tagTypes: ["products", "users"],
     endpoints: () => ({})
 })

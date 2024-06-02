@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import ContainerWrapper from "@/app/components/ContainerWrapper";
+import ContainerWrapper from "@/components/ContainerWrapper";
 import { AntDesign } from "@expo/vector-icons";
 import { SIZES, theme } from "@/theme/theme";
 import { useNavigation } from "expo-router";

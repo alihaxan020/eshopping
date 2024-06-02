@@ -1,14 +1,13 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import Loading from "../../components/loading";
-import ListItem from "../../components/ListItem";
+import { FlatList, StyleSheet, View, Text } from "react-native";
+import React from "react";
 import { SIZES } from "@/theme/theme";
-import ContainerWrapper from "../../components/ContainerWrapper";
+import ContainerWrapper from "../../../components/ContainerWrapper";
 import { useGetProductsQuery } from "@/redux/features/products/productApi";
+import Loading from "@/components/loading";
+import ListItem from "@/components/ListItem";
+import { Link } from "expo-router";
 
-const index = () => {
-  const { data, error, isLoading } = useGetProductsQuery({});
-
+const home = () => {
   return (
     <View
       style={{
@@ -16,7 +15,10 @@ const index = () => {
       }}
     >
       <ContainerWrapper>
-        {isLoading ? (
+        <Link href={"/cart"}>
+          <Text>GO Cart</Text>
+        </Link>
+        {/* {isLoading ? (
           <Loading />
         ) : (
           <FlatList
@@ -29,12 +31,12 @@ const index = () => {
             renderItem={({ item }) => <ListItem item={item} />}
             keyExtractor={(item: any) => item.id.toString()}
           />
-        )}
+        )} */}
       </ContainerWrapper>
     </View>
   );
 };
 
-export default index;
+export default home;
 
 const styles = StyleSheet.create({});
